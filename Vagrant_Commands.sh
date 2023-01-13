@@ -28,7 +28,7 @@ config.vm.hostname = "testbox01"
 vagrant reload
 
 #Assign the Virtual Machine an IP Address (direct under the hostanme)
-config.vm.network "private_network", ip: "10.9.8.7"
+config.vm.network "private_network", ip: "192.168.56.101"
 
 #Be sure to save your changes
 
@@ -36,7 +36,7 @@ config.vm.network "private_network", ip: "10.9.8.7"
 vagrant reload
 
 #Test
-ping -c 3 10.9.8.7
+ping -c 3 192.168.56.101
 
 #Destroy the Virtual Machine
 vagrant destroy
@@ -57,12 +57,12 @@ Vagrant.configure("2") do |config|
 
 	config.vm.define "test1" do |test1|
 		test1.vm.hostname = "test1"
-		test1.vm.network "private_network", ip: "10.9.8.5"
+		test1.vm.network "private_network", ip: "192.168.56.101"
 	end
 
 	config.vm.define "test2" do |test2|
 		test2.vm.hostname = "test2"
-		test2.vm.network "private_network", ip: "10.9.8.6"
+		test2.vm.network "private_network", ip: "192.168.56.102"
 	end
 end
 
@@ -78,7 +78,7 @@ exit
 
 #Connect to the test2 virtual machine to confirm that it’s working
 vagrant ssh test2
-ping -c 3 10.9.8.5
+ping -c 3 192.168.56.101
 
 #Stop the Virtual Machines
 vagrant halt
